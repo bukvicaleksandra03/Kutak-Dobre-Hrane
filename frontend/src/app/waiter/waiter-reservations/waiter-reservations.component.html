@@ -1,0 +1,183 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Pending reservations</b></div>
+
+  <div class="table-responsive" *ngIf="pendingReservations.length > 0; else noPendingReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time start</th>
+          <th>Time end</th>
+          <th>Additional requirements</th>
+          <th></th>
+          <th>Comment why declined</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pendingReservations">
+          <td>{{ item.username }}</td>
+          <td>
+            {{ item.datetime_start | date : 'dd-MM-yyyy' }}
+          </td>
+          <td>
+            {{ item.datetime_start | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.datetime_end | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.additional_requirements }}
+          </td>
+          <td>
+            <button (click)="viewSelectedTable(item)">View selected table</button>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="item.declined_comment" /><button (click)="decline(item)">
+              Decline
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: red">{{ errorMessagePending }}</span>
+  </div>
+  <ng-template #noPendingReservations> There are currently no pending reservations. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Currently ongoing, mark weather guests showed up</b></div>
+
+  <div class="table-responsive" *ngIf="ongoingReservations.length > 0; else noOngoingReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time start</th>
+          <th>Time end</th>
+          <th>Additional requirements</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ongoingReservations">
+          <td>{{ item.username }}</td>
+          <td>
+            {{ item.datetime_start | date : 'dd-MM-yyyy' }}
+          </td>
+          <td>
+            {{ item.datetime_start | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.datetime_end | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.additional_requirements }}
+          </td>
+          <td>
+            <button (click)="showedUp(item)">Showed up</button>
+          </td>
+          <td>
+            <button (click)="didntShowUp(item)">Didn't show up</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: red">{{ errorMessageOngoing }}</span>
+  </div>
+  <ng-template #noOngoingReservations> There are currently no ongoing reservations. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Currenty here</b></div>
+
+  <div
+    class="table-responsive"
+    *ngIf="currentyHereReservations.length > 0; else noCurrentyHereReservations"
+  >
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time start</th>
+          <th>Time end</th>
+          <th>Additional requirements</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of currentyHereReservations">
+          <td>{{ item.username }}</td>
+          <td>
+            {{ item.datetime_start | date : 'dd-MM-yyyy' }}
+          </td>
+          <td>
+            {{ item.datetime_start | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.datetime_end | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.additional_requirements }}
+          </td>
+          <td>
+            <button [disabled]="item.time_increased == true" (click)="increaseReservationTime(item)">
+              Increase reservation time (by 30min)
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: red">{{ errorMessageCurrentyHere }}</span>
+  </div>
+  <ng-template #noCurrentyHereReservations>
+    There are no reservations which are currently in the restaurant.
+  </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Accepted reservations</b></div>
+
+  <div class="table-responsive" *ngIf="acceptedReservations.length > 0; else noAcceptedReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time start</th>
+          <th>Time end</th>
+          <th>Additional requirements</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of acceptedReservations">
+          <td>{{ item.username }}</td>
+          <td>
+            {{ item.datetime_start | date : 'dd-MM-yyyy' }}
+          </td>
+          <td>
+            {{ item.datetime_start | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.datetime_end | date : 'HH:mm a' }}
+          </td>
+          <td>
+            {{ item.additional_requirements }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: red">{{ errorMessageAccepted }}</span>
+  </div>
+  <ng-template #noAcceptedReservations> There are currently no accepted reservations. </ng-template>
+</div>

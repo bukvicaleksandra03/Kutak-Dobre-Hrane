@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NewRestaurantComponent } from './new-restaurant.component';
+
+describe('NewRestaurantComponent', () => {
+  let component: NewRestaurantComponent;
+  let fixture: ComponentFixture<NewRestaurantComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [NewRestaurantComponent]
+    });
+    fixture = TestBed.createComponent(NewRestaurantComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

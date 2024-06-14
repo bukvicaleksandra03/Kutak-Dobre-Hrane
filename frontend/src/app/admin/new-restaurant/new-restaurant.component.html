@@ -1,0 +1,103 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>
+        <input type="text" [(ngModel)]="newRestaurant.name" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Type:</td>
+      <td>
+        <input type="text" [(ngModel)]="newRestaurant.type" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Address:</td>
+      <td>
+        <input type="text" [(ngModel)]="newRestaurant.address" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Short description:</td>
+      <td>
+        <input type="text" [(ngModel)]="newRestaurant.short_description" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Contact person:</td>
+      <td>
+        <input type="tel" [(ngModel)]="newRestaurant.contact_person" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Work hours:</td>
+      <label
+        >Start time:
+        <td>
+          <input type="time" [(ngModel)]="newRestaurant.working_time_start" /></td
+      ></label>
+      <label
+        >End time:
+        <td>
+          <input type="time" [(ngModel)]="newRestaurant.working_time_end" /></td
+      ></label>
+    </tr>
+
+    <tr>
+      <td>Choose way to enter &nbsp;<br />restaurant layout:</td>
+      <select [(ngModel)]="layoutEnteringType">
+        <option value="canvas">Draw on Canvas</option>
+        <option value="json">JSON file</option>
+      </select>
+    </tr>
+
+    <tr *ngIf="layoutEnteringType === 'json'">
+      <td>Insert json file here:</td>
+      <td>
+        <input type="file" accept=".json" (change)="getFile($event)" />
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td>
+        <button (click)="addRestaurantToDB()">Add restaurant</button>
+      </td>
+    </tr>
+  </table>
+  <span style="color: red; margin-left: 30px">{{ message }}</span
+  ><br />
+
+  <div *ngIf="layoutEnteringType === 'canvas'">
+    <span style="color: blue">{{ messageCanvas }}</span
+    ><br />
+
+    <canvas #canvasElement width="600" height="360" style="border: 2px solid #000000"></canvas><br />
+
+    <button (click)="changeCurrentlyAdding('kitchen')">Add kitchen</button>&nbsp;
+    <button (click)="changeCurrentlyAdding('toilet')">Add toilet</button>&nbsp;<br />
+    <label for="quantity">Num. of max people at the table (between 1 and 10):</label>
+    <input
+      type="number"
+      id="quantity"
+      name="quantity"
+      min="1"
+      max="10"
+      step="1"
+      [defaultValue]="0"
+      [(ngModel)]="peopleAtTable"
+    />&nbsp;
+    <button (click)="changeCurrentlyAdding('table')" [disabled]="peopleAtTable == 0">Add table</button
+    ><br />
+    <button (click)="changeCurrentlyAdding('removing')">Remove an element</button> <br />
+    <span style="color: red; margin-left: 30px">{{ message }}</span>
+  </div>
+
+  <pre id="jsonOutput"></pre>
+</div>

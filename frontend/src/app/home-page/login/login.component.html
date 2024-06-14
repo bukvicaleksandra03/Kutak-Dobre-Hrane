@@ -1,0 +1,59 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td>
+        <input type="text" [(ngModel)]="username" name="username" />
+      </td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td>
+        <input type="password" [(ngModel)]="password" name="password" />
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td style="text-align: right">
+        <button (click)="login()">Login</button>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td style="text-align: right">
+        <button (click)="forgottenPassword()">Forgotten password</button>
+      </td>
+    </tr>
+  </table>
+  <span style="color: red; margin-left: 30px">{{ message }}</span>
+  <hr />
+
+  <table style="margin-left: 30px" *ngIf="changingPasswordstep1">
+    <tr>
+      <td>Username:</td>
+      <td><input type="text" [(ngModel)]="username2" /></td>
+      <td><button (click)="enterUsername()">Enter username</button></td>
+    </tr>
+  </table>
+  <table style="margin-left: 30px" *ngIf="changingPasswordstep2">
+    <tr>
+      <td>{{ safetyQuestion }}</td>
+      <td><input type="text" [(ngModel)]="safetyAnswer" /></td>
+      <td>
+        <button (click)="enterSafetyAnswer()">Enter safety answer</button>
+      </td>
+    </tr>
+  </table>
+  <table style="margin-left: 30px" *ngIf="changingPasswordstep3">
+    <tr>
+      <td>Enter new password:</td>
+      <td><input type="password" [(ngModel)]="newPassword1" /></td>
+    </tr>
+    <tr>
+      <td>Enter new password again:</td>
+      <td><input type="password" [(ngModel)]="newPassword2" /></td>
+      <td><button (click)="changePassword()">Change password</button></td>
+    </tr>
+  </table>
+  <span style="color: red; margin-left: 30px">{{ message2 }}</span>
+</div>

@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div class="card" style="width: 26rem">
+    <div class="card-body">
+      <h5 class="card-title text-center">Statistics</h5>
+      <p class="card-text">
+        Number of restaurants: {{ restaurantsNum }}<br />
+        Number of registered users: {{ numOfRegisteredGuests }}<br />
+        Number of reservations made in the last 24h: {{ numOfReservations24h }}<br />
+        Number of reservations made in the last week: {{ numOfReservationsWeek }}<br />
+        Number of reservations made in the last month: {{ numOfReservationsMonth }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Restaurants</b></div>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <td>filter name: <input type="text" [(ngModel)]="searchName" /></td>
+          <td>filter address: <input type="text" [(ngModel)]="searchAddress" /></td>
+          <td>filter type: <input type="text" [(ngModel)]="searchType" /></td>
+          <td>
+            <button (click)="filter()">Filter</button>&nbsp;
+            <button (click)="resetFilters()">Reset filters</button>
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Name
+              <div style="margin-left: 5px">
+                <button (click)="sortAscName()">&darr;</button>
+                <button (click)="sortDescName()">&uarr;</button>
+              </div>
+            </div>
+          </th>
+
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Address
+              <div style="margin-left: 5px">
+                <button (click)="sortAscAddress()">&darr;</button>
+                <button (click)="sortDescAddress()">&uarr;</button>
+              </div>
+            </div>
+          </th>
+
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Type
+              <div style="margin-left: 5px">
+                <button (click)="sortAscType()">&darr;</button>
+                <button (click)="sortDescType()">&uarr;</button>
+              </div>
+            </div>
+          </th>
+
+          <th>Waiters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let restaurant of fittingRestaurants">
+          <td>{{ restaurant.name }}</td>
+          <td>{{ restaurant.address }}</td>
+          <td>{{ restaurant.type }}</td>
+          <td>{{ restaurant.waiters }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

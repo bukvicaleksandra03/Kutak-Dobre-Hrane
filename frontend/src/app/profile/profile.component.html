@@ -1,0 +1,90 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <table style="margin-left: 30px">
+    <tr>
+      <td>Name:</td>
+      <td>
+        {{ user.firstname }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Lastname:</td>
+      <td>{{ user.lastname }}</td>
+    </tr>
+
+    <tr *ngIf="user.type == 'guest'">
+      <td>Address:</td>
+      <td>{{ user.address }}</td>
+    </tr>
+
+    Profile picture:
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <img [src]="'http://localhost:4000/pictures/' + user.profile_picture" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Email:</td>
+      <td>{{ user.email }}</td>
+    </tr>
+
+    <tr>
+      <td>Phone number:</td>
+      <td>{{ user.phone }}</td>
+    </tr>
+
+    <tr *ngIf="user.type == 'guest'">
+      <td>Credit card:</td>
+      <td>{{ user.credit_card }}</td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td style="text-align: right">
+        <button (click)="changeProfile()">Edit profile info</button>
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td style="text-align: right">
+        <button (click)="startChanging()">Change password</button>
+      </td>
+    </tr>
+  </table>
+  <br />
+
+  <table *ngIf="changingPassword" style="margin-left: 30px">
+    <tr>
+      <td>Old password:</td>
+      <td>
+        <input type="password" [(ngModel)]="oldPassword" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Enter new password:</td>
+      <td>
+        <input type="password" [(ngModel)]="newPassword1" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Enter new password again:</td>
+      <td>
+        <input type="password" [(ngModel)]="newPassword2" />
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td>
+        <button (click)="changePassword()">Click to change</button>
+      </td>
+    </tr>
+  </table>
+  <span style="color: red; margin-left: 30px">{{ message }}</span>
+</div>

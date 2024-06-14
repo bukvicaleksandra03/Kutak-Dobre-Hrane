@@ -1,0 +1,106 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <table style="margin-left: 30px">
+    <tr>
+      <td>Username:</td>
+      <td><input type="text" [(ngModel)]="user.username" /></td>
+    </tr>
+
+    <tr>
+      <td>Safety question:</td>
+      <td><input type="text" [(ngModel)]="user.safety_question" /></td>
+    </tr>
+
+    <tr>
+      <td>Safety answer:</td>
+      <td><input type="text" [(ngModel)]="user.safety_answer" /></td>
+    </tr>
+
+    <tr>
+      <td>Firstname:</td>
+      <td><input type="text" [(ngModel)]="user.firstname" /></td>
+    </tr>
+
+    <tr>
+      <td>Lastname:</td>
+      <td><input type="text" [(ngModel)]="user.lastname" /></td>
+    </tr>
+
+    <tr>
+      <td>Gender:</td>
+      <td>
+        <label
+          ><input
+            type="radio"
+            value="M"
+            id="gender"
+            [(ngModel)]="user.gender"
+          />Male</label
+        >&nbsp;
+        <label
+          ><input
+            type="radio"
+            value="F"
+            id="gender"
+            [(ngModel)]="user.gender"
+          />Female</label
+        >
+      </td>
+    </tr>
+
+    <tr>
+      <td>Address:</td>
+      <td><input type="text" [(ngModel)]="user.address" /></td>
+    </tr>
+
+    <tr>
+      <td>Insert new profile picture here:</td>
+      <td>
+        <input
+          name="profilnaSlikaSrc"
+          type="file"
+          accept="image/*"
+          (change)="getFile($event)"
+        />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Email:</td>
+      <td><input type="text" [(ngModel)]="user.email" /></td>
+    </tr>
+
+    <tr>
+      <td>Phone number:</td>
+      <td><input type="text" [(ngModel)]="user.phone" /></td>
+    </tr>
+
+    <tr *ngIf="user.type == 'guest'">
+      <td>Credit card:</td>
+      <td><input type="text" [(ngModel)]="user.credit_card" /></td>
+    </tr>
+
+    <!-- <tr *ngIf="user.type=='waiter'">
+    <td>Restaurant</td>
+    <td>
+      <select [(ngModel)]="nameOfRestaurant">
+        <option *ngFor="let restaurant of restaurants" [value]="restaurant.name">{{restaurant.name}}</option>
+      </select>
+    </td>
+  </tr> -->
+    <br />
+    <tr>
+      <td></td>
+      <td>
+        <button (click)="change()">Click to finish changes</button>
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td>
+        <button (click)="goBack()">Go back</button>
+      </td>
+    </tr>
+  </table>
+  <span style="color: red; margin-left: 30px">{{ message }}</span>
+</div>

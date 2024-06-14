@@ -1,0 +1,39 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Pending registrations</b></div>
+  <div class="table-responsive" *ngIf="regRequests.length > 0; else noRequests">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Credit Card</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of regRequests">
+          <td>{{ regRequests.indexOf(item) + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.credit_card }}</td>
+          <td><button (click)="acceptRequest(item)">Accept request</button></td>
+          <td><button (click)="declineRequest(item)">Decline request</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noRequests> There are currently no pending user requests. </ng-template>
+</div>

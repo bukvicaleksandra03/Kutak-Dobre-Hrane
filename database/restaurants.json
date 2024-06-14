@@ -1,0 +1,206 @@
+[{
+  "_id": {
+    "$oid": "66620bd69cc3ccdabceda24a"
+  },
+  "name": "Carribic pizza",
+  "type": "fast food",
+  "address": "Ustanicka 45",
+  "short_description": "Prvi fast food na balkanu.",
+  "contact_person": "+3814959182",
+  "average_rating": -1,
+  "working_time_start": "10:00",
+  "working_time_end": "22:00",
+  "layout": {
+    "kitchens": [
+      {
+        "x": 125.00000190734863,
+        "y": 273.8153381347656,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda24c"
+        }
+      }
+    ],
+    "toilets": [
+      {
+        "x": 502.00000190734863,
+        "y": 273.8153381347656,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda24d"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "maxPeople": 5,
+        "x": 75.00000190734863,
+        "y": 131.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda24e"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 167.00000190734863,
+        "y": 129.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda24f"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 511.00000190734863,
+        "y": 127.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda250"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 514.0000019073486,
+        "y": 192.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda251"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 315.00000190734863,
+        "y": 189.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda252"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 315.00000190734863,
+        "y": 129.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda253"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 420.00000190734863,
+        "y": 129.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda254"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 420.00000190734863,
+        "y": 190.81533813476562,
+        "_id": {
+          "$oid": "66620bd69cc3ccdabceda255"
+        }
+      }
+    ],
+    "_id": {
+      "$oid": "66620bd69cc3ccdabceda24b"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6662f20d9cc3ccdabceda272"
+  },
+  "name": "Dva Lava",
+  "type": "domaca kuhinja",
+  "address": "Ustanicka 54b",
+  "short_description": "Pravimo samo tradicionalna srpska jela.",
+  "contact_person": "+3813901092",
+  "average_rating": -1,
+  "working_time_start": "10:00",
+  "working_time_end": "22:00",
+  "layout": {
+    "kitchens": [
+      {
+        "x": 125.00000190734863,
+        "y": 273.8153381347656,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda274"
+        }
+      }
+    ],
+    "toilets": [
+      {
+        "x": 502.00000190734863,
+        "y": 273.8153381347656,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda275"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "maxPeople": 5,
+        "x": 75.00000190734863,
+        "y": 131.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda276"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 167.00000190734863,
+        "y": 129.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda277"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 511.00000190734863,
+        "y": 127.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda278"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 514.0000019073486,
+        "y": 192.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda279"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 315.00000190734863,
+        "y": 189.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda27a"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 315.00000190734863,
+        "y": 129.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda27b"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 420.00000190734863,
+        "y": 129.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda27c"
+        }
+      },
+      {
+        "maxPeople": 5,
+        "x": 420.00000190734863,
+        "y": 190.81533813476562,
+        "_id": {
+          "$oid": "6662f20d9cc3ccdabceda27d"
+        }
+      }
+    ],
+    "_id": {
+      "$oid": "6662f20d9cc3ccdabceda273"
+    }
+  },
+  "__v": 0
+}]

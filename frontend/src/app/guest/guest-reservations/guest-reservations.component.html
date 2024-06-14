@@ -1,0 +1,209 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Rate the experience</b></div>
+
+  <div class="table-responsive" *ngIf="passedReservations.length > 0; else noPassedReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Reservation time</th>
+          <th>Number of people</th>
+          <th>Comment</th>
+          <th>Rate</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of passedReservations">
+          <td>{{ reservation.restaurantName }}</td>
+          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
+          <td>{{ reservation.number_of_people }}</td>
+          <td>
+            <textarea rows="3" cols="40" [(ngModel)]="reservation.comment"> </textarea>
+          </td>
+          <td>
+            <ngb-rating
+              [(rate)]="reservation.rating"
+              [max]="5"
+              (rateChange)="onRateChange($event, reservation)"
+            ></ngb-rating>
+            <pre>{{ reservation.rating }}</pre>
+          </td>
+          <td><button (click)="submitRating(reservation)">Submit</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: red">{{ errorMsgPassed }}</span>
+  </div>
+  <ng-template #noPassedReservations> There are currently no reservations you can rate </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Declined reservations</b></div>
+
+  <div class="table-responsive" *ngIf="declinedReservations.length > 0; else noDeclinedReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Reservation time</th>
+          <th>Number of people</th>
+          <th>Reason why it was declined</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of declinedReservations">
+          <td>{{ reservation.restaurantName }}</td>
+          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
+          <td>{{ reservation.number_of_people }}</td>
+          <td>{{ reservation.declined_comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noDeclinedReservations> You have no reservations which have been declined. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Pending reservations</b></div>
+
+  <div class="table-responsive" *ngIf="pendingReservations.length > 0; else noPendingReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Reservation time</th>
+          <th>Number of people</th>
+          <th>Cancel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of pendingReservations">
+          <td>{{ reservation.restaurantName }}</td>
+          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
+          <td>{{ reservation.number_of_people }}</td>
+          <td><button (click)="cancelReservation(reservation)">Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noPendingReservations> There are currently no pending reservations. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Accepted reservations</b></div>
+
+  <div
+    class="table-responsive"
+    *ngIf="haventPassedReservations.length > 0; else noHaventPassedReservations"
+  >
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Reservation time</th>
+          <th>Number of people</th>
+          <th>Cancel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of haventPassedReservations">
+          <td>{{ reservation.restaurantName }}</td>
+          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
+          <td>{{ reservation.number_of_people }}</td>
+          <td>
+            <button
+              (click)="cancelReservation(reservation)"
+              [disabled]="isAtLeast45MinutesBefore(reservation.datetime_start)"
+            >
+              Cancel
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noHaventPassedReservations> There are currently no future reservations. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Archive of all past reservations</b></div>
+
+  <div class="table-responsive" *ngIf="archiveReservations.length > 0; else noArchiveReservations">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Reservation time</th>
+          <th>Number of people</th>
+          <th>Comment</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of archiveReservations">
+          <td>{{ reservation.restaurantName }}</td>
+          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
+          <td>{{ reservation.number_of_people }}</td>
+          <td>{{ reservation.comment }}</td>
+          <td>
+            <ngb-rating [(rate)]="reservation.rating" [max]="5" [readonly]="true"></ngb-rating>
+            <pre>{{ reservation.rating }}</pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noArchiveReservations> There are currently archived reservations. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: red"><b>Havent showed reservations</b></div>
+
+  <div
+    class="table-responsive"
+    *ngIf="haventShowedReservations.length > 0; else noHaventShowedReservations"
+  >
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Reservation time</th>
+          <th>Number of people</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of haventShowedReservations">
+          <td>{{ reservation.restaurantName }}</td>
+          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
+          <td>{{ reservation.number_of_people }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noHaventShowedReservations>
+    There are currently no reservations to which you haven't showed up.
+  </ng-template>
+</div>

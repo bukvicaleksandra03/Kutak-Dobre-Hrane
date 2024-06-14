@@ -1,0 +1,225 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Active guests</b></div>
+
+  <div class="table-responsive" *ngIf="activeGuests.length > 0; else noActiveGuests">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Credit Card</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of activeGuests">
+          <td>{{ activeGuests.indexOf(item) + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.credit_card }}</td>
+          <td>
+            <button (click)="deactivateUser(item)">Deactivate</button>
+          </td>
+          <td>
+            <button (click)="deleteUser(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noActiveGuests> There are currently no active guests. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Active waiters</b></div>
+
+  <div class="table-responsive" *ngIf="activeWaiters.length > 0; else noActiveWaiters">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of activeWaiters">
+          <td>{{ activeWaiters.indexOf(item) + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>
+            <button (click)="deactivateUser(item)">Deactivate</button>
+          </td>
+          <td>
+            <button (click)="deleteUser(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noActiveWaiters> There are currently no active waiters. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Blocked guests</b></div>
+  <div>(those that have not showed up for 3 reservations)</div>
+
+  <div class="table-responsive" *ngIf="blockedGuests.length > 0; else noBlockedGuests">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Credit Card</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of blockedGuests">
+          <td>{{ blockedGuests.indexOf(item) + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.credit_card }}</td>
+          <td>
+            <button (click)="unblockGuest(item)">Unblock</button>
+          </td>
+          <td>
+            <button (click)="deleteUser(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noBlockedGuests> There are currently no blocked guests. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Deactivated guests</b></div>
+
+  <div class="table-responsive" *ngIf="deactivatedGuests.length > 0; else noDeactivatedGuests">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Credit Card</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of deactivatedGuests">
+          <td>{{ deactivatedGuests.indexOf(item) + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.credit_card }}</td>
+          <td>
+            <button (click)="activateUser(item)">Activate</button>
+          </td>
+          <td>
+            <button (click)="deleteUser(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noDeactivatedGuests> There are currently no deactivated guests. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Deactivated waiters</b></div>
+
+  <div class="table-responsive" *ngIf="deactivatedWaiters.length > 0; else noDeactivatedWaiters">
+    <table class="table table-sm table-striped" style="margin-left: 15px; width: 80%">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of deactivatedWaiters">
+          <td>{{ deactivatedWaiters.indexOf(item) + 1 }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.firstname }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>
+            <button (click)="activateUser(item)">Activate</button>
+          </td>
+          <td>
+            <button (click)="deleteUser(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noDeactivatedWaiters> There are currently no deactivated waiters. </ng-template>
+</div>

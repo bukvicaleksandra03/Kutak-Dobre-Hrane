@@ -1,0 +1,37 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>All restaurants</b></div>
+
+  <div class="table-responsive" *ngIf="allRestaurants.length > 0; else noRestaurants">
+    <table class="table table-sm table-striped w-100 text-small">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Address</th>
+          <th>Contact number</th>
+          <th>Average rating</th>
+          <th>Work time start</th>
+          <th>Work time end</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allRestaurants">
+          <td>{{ allRestaurants.indexOf(item) + 1 }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.type }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.contact_person }}</td>
+          <td>
+            <ngb-rating [(rate)]="item.average_rating" [max]="5" [readonly]="true"></ngb-rating>
+            <pre *ngIf="item.num_of_ratings > 0">{{ item.average_rating }}</pre>
+            <pre *ngIf="item.num_of_ratings == 0">no ratings yet</pre>
+          </td>
+          <td>{{ item.working_time_start }}</td>
+          <td>{{ item.working_time_end }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noRestaurants> There are currently no restaurants. </ng-template>
+</div>

@@ -1,0 +1,98 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>
+        {{ restaurant.name }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Address:</td>
+      <td>
+        {{ restaurant.address }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Type:</td>
+      <td>
+        {{ restaurant.type }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Phone number:</td>
+      <td>
+        {{ restaurant.contact_person }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Rating</td>
+      <td *ngIf="restaurant.average_rating != -1">
+        <ngb-rating [(rate)]="restaurant.average_rating" [max]="5" [readonly]="true"></ngb-rating>
+        <pre>{{ restaurant.average_rating }}</pre>
+      </td>
+      <td *ngIf="restaurant.average_rating == -1">no rating yet</td>
+    </tr>
+  </table>
+
+  <div class="container" *ngIf="reservationsWithComments.length > 0; else noComments">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="table-responsive">
+          <table class="table table-sm table-striped w-100 text-small">
+            <thead>
+              <tr>
+                <th class="px-4 text-center">User</th>
+                <th class="px-4 text-center">Comment</th>
+                <th class="px-4 text-center">Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of reservationsWithComments">
+                <td class="px-4 text-center">{{ item.username }}</td>
+                <td class="px-4 text-center">{{ item.comment }}</td>
+                <td class="px-4 text-center">
+                  <ngb-rating [(rate)]="item.rating" [max]="5" [readonly]="true"></ngb-rating>
+                  <pre>{{ item.rating }}</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noComments> There are currently no comments for this restaurant. </ng-template>
+
+  <hr />
+  <div style="margin-left: 30px">
+    <h2>Make a reservation</h2>
+    Pick date and time of the reservation:
+    <input
+      id="datetimeOfRes"
+      type="datetime-local"
+      [(ngModel)]="datetimeStr"
+      (change)="newDateTimeSelected()"
+    />
+    <br />
+    Number of people:
+    <input type="number" min="1" step="1" [(ngModel)]="numOfPeople" [defaultValue]="2" />
+    <br />
+    Additional requirements: <br />
+    <textarea rows="3" cols="40" [(ngModel)]="additionalReq"> </textarea>
+    <br />
+
+    <button (click)="makeReservation()">Make reservation</button><br />
+  </div>
+  <span style="margin-left: 30px; color: red">{{ errorMessage }}</span>
+
+  <div style="margin-left: 30px">
+    <span style="color: blue">{{ messageCanvas }}</span
+    ><br />
+
+    <canvas #canvasElement width="600" height="360" style="border: 2px solid #000000"></canvas><br />
+  </div>
+</div>

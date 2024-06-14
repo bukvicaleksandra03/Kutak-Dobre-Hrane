@@ -1,0 +1,4 @@
+ng add @angular/localize
+npm i @popperjs/core
+npm i @ng-bootstrap/ng-bootstrap@15.1.1
+ng add @ng-bootstrap/ng-bootstrap@15.1.1
