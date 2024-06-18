@@ -10,7 +10,7 @@ const mealSchema = new mongoose.Schema({
   name: { type: String },
   picture: { type: String },
   price: { type: Number },
-  ingredients: { type: [String] },
+  ingredients: { type: String },
 });
 
 const restaurantSchema = new mongoose.Schema({

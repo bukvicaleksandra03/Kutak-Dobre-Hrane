@@ -2,7 +2,7 @@
   <div style="color: rgb(0, 153, 255)"><b>Rate the experience</b></div>
 
   <div class="table-responsive" *ngIf="passedReservations.length > 0; else noPassedReservations">
-    <table class="table table-sm table-striped w-100 text-small">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
       <thead>
         <tr>
           <th>Restaurant</th>
@@ -43,89 +43,37 @@
 <hr />
 
 <div class="d-flex flex-column align-items-center mt-3">
-  <div style="color: rgb(0, 153, 255)"><b>Declined reservations</b></div>
+  <div style="color: rgb(0, 153, 255)"><b>Current reservations</b></div>
 
-  <div class="table-responsive" *ngIf="declinedReservations.length > 0; else noDeclinedReservations">
-    <table class="table table-sm table-striped w-100 text-small">
+  <div class="table-responsive" *ngIf="currentReservations.length > 0; else noCurrentReservations">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
       <thead>
         <tr>
           <th>Restaurant</th>
           <th>Date</th>
           <th>Reservation time</th>
           <th>Number of people</th>
-          <th>Reason why it was declined</th>
+          <th>Status</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let reservation of declinedReservations">
+        <tr *ngFor="let reservation of currentReservations">
           <td>{{ reservation.restaurantName }}</td>
           <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
           <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
           <td>{{ reservation.number_of_people }}</td>
-          <td>{{ reservation.declined_comment }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <ng-template #noDeclinedReservations> You have no reservations which have been declined. </ng-template>
-</div>
-
-<hr />
-
-<div class="d-flex flex-column align-items-center mt-3">
-  <div style="color: rgb(0, 153, 255)"><b>Pending reservations</b></div>
-
-  <div class="table-responsive" *ngIf="pendingReservations.length > 0; else noPendingReservations">
-    <table class="table table-sm table-striped w-100 text-small">
-      <thead>
-        <tr>
-          <th>Restaurant</th>
-          <th>Date</th>
-          <th>Reservation time</th>
-          <th>Number of people</th>
-          <th>Cancel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let reservation of pendingReservations">
-          <td>{{ reservation.restaurantName }}</td>
-          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
-          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
-          <td>{{ reservation.number_of_people }}</td>
-          <td><button (click)="cancelReservation(reservation)">Cancel</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <ng-template #noPendingReservations> There are currently no pending reservations. </ng-template>
-</div>
-
-<hr />
-
-<div class="d-flex flex-column align-items-center mt-3">
-  <div style="color: rgb(0, 153, 255)"><b>Accepted reservations</b></div>
-
-  <div
-    class="table-responsive"
-    *ngIf="haventPassedReservations.length > 0; else noHaventPassedReservations"
-  >
-    <table class="table table-sm table-striped w-100 text-small">
-      <thead>
-        <tr>
-          <th>Restaurant</th>
-          <th>Date</th>
-          <th>Reservation time</th>
-          <th>Number of people</th>
-          <th>Cancel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let reservation of haventPassedReservations">
-          <td>{{ reservation.restaurantName }}</td>
-          <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
-          <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
-          <td>{{ reservation.number_of_people }}</td>
-          <td>
+          <td
+            [class.green]="reservation.status == 'accepted'"
+            [class.orange]="reservation.status == 'pending'"
+            [class.red]="reservation.status == 'declined'"
+          >
+            {{ reservation.status }}
+          </td>
+          <td style="width: 350px" *ngIf="reservation.status == 'declined'">
+            {{ reservation.declined_comment }}
+          </td>
+          <td style="width: 350px" *ngIf="reservation.status != 'declined'">
             <button
               (click)="cancelReservation(reservation)"
               [disabled]="isAtLeast45MinutesBefore(reservation.datetime_start)"
@@ -137,7 +85,7 @@
       </tbody>
     </table>
   </div>
-  <ng-template #noHaventPassedReservations> There are currently no future reservations. </ng-template>
+  <ng-template #noCurrentReservations> You currently have no reservations. </ng-template>
 </div>
 
 <hr />
@@ -146,7 +94,7 @@
   <div style="color: rgb(0, 153, 255)"><b>Archive of all past reservations</b></div>
 
   <div class="table-responsive" *ngIf="archiveReservations.length > 0; else noArchiveReservations">
-    <table class="table table-sm table-striped w-100 text-small">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
       <thead>
         <tr>
           <th>Restaurant</th>
@@ -163,8 +111,8 @@
           <td>{{ reservation.datetime_start | date : 'dd-MM-yyyy' }}</td>
           <td>{{ reservation.datetime_start | date : 'HH:mm a' }}</td>
           <td>{{ reservation.number_of_people }}</td>
-          <td>{{ reservation.comment }}</td>
-          <td>
+          <td style="width: 350px">{{ reservation.comment }}</td>
+          <td style="width: 350px">
             <ngb-rating [(rate)]="reservation.rating" [max]="5" [readonly]="true"></ngb-rating>
             <pre>{{ reservation.rating }}</pre>
           </td>
@@ -184,7 +132,7 @@
     class="table-responsive"
     *ngIf="haventShowedReservations.length > 0; else noHaventShowedReservations"
   >
-    <table class="table table-sm table-striped w-100 text-small">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
       <thead>
         <tr>
           <th>Restaurant</th>

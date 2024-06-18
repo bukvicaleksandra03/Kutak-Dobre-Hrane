@@ -6,6 +6,7 @@ import * as lf from 'src/app/layoutFuncs';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { Router } from '@angular/router';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-reservation-details',
@@ -26,6 +27,7 @@ export class ReservationDetailsComponent implements OnInit {
   selectedTable: string = '';
 
   constructor(
+    private userService: UserService,
     private reservationsService: ReservationsService,
     private restaurantService: RestaurantsService,
     private router: Router
@@ -33,14 +35,12 @@ export class ReservationDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let reservationLS = localStorage.getItem('reservation');
-    let userLS = localStorage.getItem('loggedUser');
-    if (!reservationLS || !userLS) return;
+    if (!reservationLS) return;
     this.reservation = JSON.parse(reservationLS);
-    this.loggedWaiter = JSON.parse(userLS);
+    this.userService.getUserProfile().subscribe((user) => {
+      this.loggedWaiter = user;
 
-    this.restaurantService
-      .getRestaurantById(this.loggedWaiter.restaurant)
-      .subscribe((restaurant) => {
+      this.restaurantService.getRestaurantById(this.loggedWaiter.restaurant).subscribe((restaurant) => {
         this.restaurant = restaurant;
 
         this.reservationsInTimeframe = [];
@@ -61,10 +61,7 @@ export class ReservationDetailsComponent implements OnInit {
                 });
               });
 
-              if (
-                this.reservation.table != null ||
-                this.reservation.table != ''
-              ) {
+              if (this.reservation.table != null || this.reservation.table != '') {
                 this.restaurant.layout.tables.forEach((table) => {
                   if (
                     table._id == this.reservation.table &&
@@ -79,19 +76,14 @@ export class ReservationDetailsComponent implements OnInit {
               if (this.myCanvas != null) {
                 const ctx = this.myCanvas.getContext('2d');
                 lf.drawDrawingSpaceBorders(ctx);
-                lf.writeRestaurantName(
-                  ctx,
-                  `Restaurant: ${this.restaurant.name}`
-                );
-                lf.writeDateAndTime(
-                  ctx,
-                  new Date(this.reservation.datetime_start)
-                );
+                lf.writeRestaurantName(ctx, `Restaurant: ${this.restaurant.name}`);
+                lf.writeDateAndTime(ctx, new Date(this.reservation.datetime_start));
                 lf.drawAll(this.restaurant.layout, ctx);
               }
             }
           });
       });
+    });
   }
 
   ngAfterViewInit() {
@@ -137,11 +129,7 @@ export class ReservationDetailsComponent implements OnInit {
     }
 
     this.reservationsService
-      .acceptReservation(
-        this.reservation._id,
-        this.loggedWaiter._id,
-        this.selectedTable
-      )
+      .acceptReservation(this.reservation._id, this.loggedWaiter._id, this.selectedTable)
       .subscribe((resp) => {
         if (resp) {
           alert('Reservation accepted');

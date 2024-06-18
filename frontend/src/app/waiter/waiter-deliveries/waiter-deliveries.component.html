@@ -1,1 +1,31 @@
-<p>waiter-deliveries works!</p>
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Requested deliveries</b></div>
+
+  <div class="table-responsive" *ngIf="pendingDeliveries.length > 0; else noPendingDeliveries">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Items</th>
+          <th>Total price</th>
+          <th>Estimated delivery</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let delivery of pendingDeliveries">
+          <td>{{ delivery.date | date : 'dd-MM-yyyy' }}</td>
+          <td>{{ delivery.date | date : 'HH:mm a' }}</td>
+          <td style="width: 250px">{{ delivery.itemsString }}</td>
+          <td>{{ delivery.total_price }}$</td>
+          <td>{{ delivery.estimated_delivery_mins }}min</td>
+          <td><button (click)="accept(delivery)">Accept</button></td>
+          <td><button (click)="decline(delivery)">Decline</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noPendingDeliveries> There are currently no requests for deliveries. </ng-template>
+</div>

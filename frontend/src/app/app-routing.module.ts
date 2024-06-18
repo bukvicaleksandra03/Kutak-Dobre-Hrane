@@ -16,7 +16,7 @@ import { NewRestaurantComponent } from './admin/new-restaurant/new-restaurant.co
 import { GuestRestaurantsComponent } from './guest/guest-restaurants/guest-restaurants.component';
 import { GuestReservationsComponent } from './guest/guest-reservations/guest-reservations.component';
 import { GuestFoodDeliveryComponent } from './guest/guest-food-delivery/guest-food-delivery.component';
-import { ShoppingCartComponent } from './guest/shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from './guest/restaurant-info/shopping-cart/shopping-cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WaiterReservationsComponent } from './waiter/waiter-reservations/waiter-reservations.component';
 import { WaiterDeliveriesComponent } from './waiter/waiter-deliveries/waiter-deliveries.component';
@@ -26,6 +26,9 @@ import { ChangeProfileComponent } from './change-profile/change-profile.componen
 import { Restaurant } from './models/restaurant';
 import { RestaurantInfoComponent } from './guest/restaurant-info/restaurant-info.component';
 import { ReservationDetailsComponent } from './waiter/reservation-details/reservation-details.component';
+import { authGuard } from './guards/auth.guard';
+import { roleGuard } from './guards/role.guard';
+import { AddMealComponent } from './admin/add-meal/add-meal.component';
 
 const routes: Routes = [
   {
@@ -44,23 +47,27 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { expectedRole: 'admin' },
     children: [
       { path: 'users-overview', component: AdminUsersOverviewComponent },
       { path: 'register-requests', component: RegisterRequestsComponent },
       { path: 'new-waiter', component: NewWaiterComponent },
       { path: 'all-restaurants', component: AllRestaurantsComponent },
       { path: 'new-restaurant', component: NewRestaurantComponent },
+      { path: 'add-meal', component: AddMealComponent },
     ],
   },
   {
     path: 'guest',
     component: GuestComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { expectedRole: 'guest' },
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'restaurants', component: GuestRestaurantsComponent },
       { path: 'reservations', component: GuestReservationsComponent },
       { path: 'food-delivery', component: GuestFoodDeliveryComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'restaurant-info', component: RestaurantInfoComponent },
       { path: 'change-profile', component: ChangeProfileComponent },
     ],
@@ -68,12 +75,15 @@ const routes: Routes = [
   {
     path: 'waiter',
     component: WaiterComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { expectedRole: 'waiter' },
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'reservations', component: WaiterReservationsComponent },
       { path: 'deliveries', component: WaiterDeliveriesComponent },
       { path: 'statistics', component: StatisticsComponent },
       { path: 'reservation-details', component: ReservationDetailsComponent },
+      { path: 'change-profile', component: ChangeProfileComponent },
     ],
   },
 ];

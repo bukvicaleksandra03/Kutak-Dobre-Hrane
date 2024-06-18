@@ -38,6 +38,27 @@ export class RestaurantController {
       });
   };
 
+  addNewMeal = (req: express.Request, res: express.Response) => {
+    let meal = {
+      name: req.body.meal.name,
+      picture: req.body.meal.picture,
+      price: req.body.meal.price,
+      ingredients: req.body.meal.ingredients,
+    };
+
+    RestaurantM.findOneAndUpdate(
+      { _id: req.body.restaurant_id },
+      { $push: { meals: meal } },
+      { returnDocument: 'after' }
+    )
+      .then((meal) => {
+        res.json(meal);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   getRestaurantById = (req: express.Request, res: express.Response) => {
     let restaurant_id = req.params.restaurant_id;
 
@@ -76,6 +97,18 @@ export class RestaurantController {
           .catch((err) => {
             console.log(err);
           });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  getMeals = (req: express.Request, res: express.Response) => {
+    let restaurant_id = req.params.restaurant_id;
+
+    RestaurantM.findOne({ _id: restaurant_id })
+      .then((restaurant) => {
+        res.json(restaurant.meals);
       })
       .catch((err) => {
         console.log(err);

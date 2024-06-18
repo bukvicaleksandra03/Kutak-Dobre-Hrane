@@ -1,0 +1,39 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>New meal</b></div>
+  <br />
+  <table style="margin-left: 30px">
+    <tr>
+      <td>Name:</td>
+      <td>
+        <input type="text" [(ngModel)]="newMeal.name" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Price in dollars:</td>
+      <td>
+        <input type="number" [min]="0" [(ngModel)]="newMeal.price" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Ingredients:</td>
+      <td>
+        <input type="text" [(ngModel)]="newMeal.ingredients" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Insert picture of the meal here:</td>
+      <td>
+        <input name="mealPictureSrc" type="file" accept="image/*" (change)="getFile($event)" />
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><button (click)="submit()">Submit</button></td>
+    </tr>
+  </table>
+  <span style="color: red; margin-left: 30px">{{ message }}</span>
+</div>

@@ -4,7 +4,7 @@ import _ from 'lodash';
 import bcrypt from 'bcrypt';
 import UserM from '../models/user';
 import RestaurantM from '../models/restaurant';
-import { ReturnDocument } from 'mongodb';
+import jwt from 'jsonwebtoken';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -35,7 +35,12 @@ export class UserController {
         } else {
           bcrypt.compare(passwordP, user.password!, (err, result) => {
             if (result) {
-              res.json({ user: user, message: 'ok' });
+              const payload = {
+                subject: user._id,
+                role: user.type,
+              };
+              const token = jwt.sign(payload, 'secretKey');
+              res.json({ message: 'ok', token: token });
             } else {
               res.json({ message: 'Wrong password' });
             }
@@ -107,6 +112,16 @@ export class UserController {
           });
       });
     }
+  };
+
+  getUserProfile = (req: express.Request, res: express.Response) => {
+    let id = (req as any).userId;
+
+    UserM.findOne({ _id: id })
+      .then((user) => res.json(user))
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   updateUser = async (req: express.Request, res: express.Response) => {
@@ -196,6 +211,17 @@ export class UserController {
 
   getAllUsers = (req: express.Request, res: express.Response) => {
     UserM.find()
+      .then((users) => {
+        res.json({ message: 'ok', users: users });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ message: 'Error get all users' });
+      });
+  };
+
+  getActiveGuests = (req: express.Request, res: express.Response) => {
+    UserM.find({ type: 'guest', $or: [{ active: 'active' }, { active: 'blocked' }] })
       .then((users) => {
         res.json({ message: 'ok', users: users });
       })
@@ -323,6 +349,19 @@ export class UserController {
           waitersString += waiterList[i].firstname + ' ' + waiterList[i].lastname;
 
         res.json({ message: 'ok', waiters: waitersString });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ message: 'Error waiters for restaurant.' });
+      });
+  };
+
+  waitersForRestaurantId = (req: express.Request, res: express.Response) => {
+    let restaurantId = req.query.restaurantId;
+
+    UserM.find({ restaurant: restaurantId })
+      .then((waiters) => {
+        res.json(waiters);
       })
       .catch((err) => {
         console.log(err);

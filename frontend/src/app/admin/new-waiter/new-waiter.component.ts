@@ -4,12 +4,7 @@ import { Restaurant } from 'src/app/models/restaurant';
 import { User } from 'src/app/models/user';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 import { UserService } from 'src/app/services/user.service';
-import {
-  checkAllFields,
-  checkPassword,
-  checkEmail,
-  checkPhone,
-} from 'src/app/userValidationFuncs';
+import { checkAllFields, checkPassword, checkEmail, checkPhone } from 'src/app/userValidationFuncs';
 
 @Component({
   selector: 'app-new-waiter',
@@ -30,12 +25,8 @@ export class NewWaiterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.restaurantServis.getAll().subscribe((resp) => {
-      if (resp['message'] === 'ok') {
-        this.restaurants = resp['restaurants'];
-      } else {
-        console.log(resp['message']);
-      }
+    this.restaurantServis.getAll().subscribe((restaurants) => {
+      this.restaurants = restaurants;
     });
   }
 
@@ -101,14 +92,8 @@ export class NewWaiterComponent implements OnInit {
     const image = new Image();
     image.src = URL.createObjectURL(slika);
     image.onload = () => {
-      if (
-        image.height < 100 ||
-        image.height > 300 ||
-        image.width < 100 ||
-        image.height > 300
-      ) {
-        this.message =
-          'Picture must have dimensions between 100x100 and 300x300';
+      if (image.height < 100 || image.height > 300 || image.width < 100 || image.height > 300) {
+        this.message = 'Picture must have dimensions between 100x100 and 300x300';
         this.prof_picture = null;
       } else {
         this.message = '';

@@ -1,0 +1,973 @@
+[{
+  "_id": {
+    "$oid": "666aa51b72c7269f75c59a17"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf8"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-13T13:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-13T16:00:00.000Z"
+  },
+  "additional_requirements": "cold",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 6,
+  "created_at": {
+    "$date": "2024-06-13T07:51:55.606Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666aebf11c0a89457c3601b8"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf9"
+  },
+  "user": {
+    "$oid": "6658ed8dafde5e4582607fd6"
+  },
+  "datetime_start": {
+    "$date": "2024-06-13T13:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-13T16:30:00.000Z"
+  },
+  "additional_requirements": "birthday song",
+  "comment": "poor service, cold food",
+  "rating": 2,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 5,
+  "time_increased": true,
+  "created_at": {
+    "$date": "2024-06-13T12:54:09.646Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666aec401c0a89457c360321"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf6"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-13T13:54:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-13T17:24:00.000Z"
+  },
+  "additional_requirements": "no additional requirements",
+  "comment": "great food",
+  "rating": 4,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 5,
+  "time_increased": true,
+  "created_at": {
+    "$date": "2024-06-13T12:55:28.699Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666b1a12228065e6029dc469"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cfe"
+  },
+  "user": {
+    "$oid": "6659a84a9225fc14b3892d6e"
+  },
+  "datetime_start": {
+    "$date": "2024-06-13T16:12:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-13T19:12:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 3,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-13T16:10:58.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666b639975a198daeffdf32a"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cfc"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-20T09:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-20T12:00:00.000Z"
+  },
+  "additional_requirements": "no noise",
+  "comment": "",
+  "rating": -1,
+  "waiter": null,
+  "status": "canceled",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-13T21:24:41.375Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c2c35a99ee4fecda584f9"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201474"
+  },
+  "user": {
+    "$oid": "666c1c621a0d8a8eb0f5dcdf"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T12:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T15:00:00.000Z"
+  },
+  "additional_requirements": "requirement 1",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6669c88443ba17757ca2110b"
+  },
+  "status": "canceled",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-14T11:40:37.056Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c2c4aa99ee4fecda58539"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201476"
+  },
+  "user": {
+    "$oid": "666c1c621a0d8a8eb0f5dcdf"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T16:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T19:00:00.000Z"
+  },
+  "additional_requirements": "req 2",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6669c88443ba17757ca2110b"
+  },
+  "status": "declined",
+  "declined_comment": "not enough space",
+  "showed_up": false,
+  "number_of_people": 5,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-14T11:40:58.065Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c34ba23af241846bba268"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf9"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T12:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T15:00:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "aoijfaowefjaowefijawf",
+  "rating": 2,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 6,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-14T12:16:58.855Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c34ee23af241846bba471"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf8"
+  },
+  "user": {
+    "$oid": "6658ed8dafde5e4582607fd6"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T12:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T15:30:00.000Z"
+  },
+  "additional_requirements": "daefawefawef",
+  "comment": "surprised by the good food this time",
+  "rating": 5,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 6,
+  "time_increased": true,
+  "created_at": {
+    "$date": "2024-06-14T12:17:50.984Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c368423af241846bba6ad"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf8"
+  },
+  "user": {
+    "$oid": "666c1c621a0d8a8eb0f5dcdf"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T12:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T15:00:00.000Z"
+  },
+  "additional_requirements": "fioajfwf",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 5,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-14T12:24:36.407Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c369e23af241846bba6ed"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201477"
+  },
+  "user": {
+    "$oid": "666c1c621a0d8a8eb0f5dcdf"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T11:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T14:00:00.000Z"
+  },
+  "additional_requirements": "fasdfasf",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6669c88443ba17757ca2110b"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-14T12:25:02.790Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666c36c223af241846bba72f"
+  },
+  "restaurant": {
+    "$oid": "66645288429a870c435c8cf2"
+  },
+  "table": {
+    "$oid": "66645288429a870c435c8cf7"
+  },
+  "user": {
+    "$oid": "666c1c621a0d8a8eb0f5dcdf"
+  },
+  "datetime_start": {
+    "$date": "2024-06-14T12:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-14T15:00:00.000Z"
+  },
+  "additional_requirements": "faefawef",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "666aa86072c7269f75c59b76"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 6,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-14T12:25:38.978Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666ef10fdc186dbec6542bbc"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": null,
+  "user": {
+    "$oid": "6658ed8dafde5e4582607fd6"
+  },
+  "datetime_start": {
+    "$date": "2024-06-19T14:04:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-19T17:04:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6669c88443ba17757ca2110b"
+  },
+  "status": "declined",
+  "declined_comment": "no big enough table",
+  "showed_up": false,
+  "number_of_people": 6,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-16T14:05:03.055Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666f2ad6dc186dbec6542cc5"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201475"
+  },
+  "user": {
+    "$oid": "6658ed8dafde5e4582607fd6"
+  },
+  "datetime_start": {
+    "$date": "2024-06-17T08:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-17T11:30:00.000Z"
+  },
+  "additional_requirements": "dofjaoijo",
+  "comment": "great food",
+  "rating": 5,
+  "waiter": {
+    "$oid": "6669c88443ba17757ca2110b"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 3,
+  "time_increased": true,
+  "created_at": {
+    "$date": "2024-06-16T18:11:34.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670aca28031e3ecbd4fe895"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201474"
+  },
+  "user": {
+    "$oid": "6659a84a9225fc14b3892d6e"
+  },
+  "datetime_start": {
+    "$date": "2024-06-18T18:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-18T21:00:00.000Z"
+  },
+  "additional_requirements": "oadhfoa",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aa9a8031e3ecbd4fe501"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 3,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:37:38.286Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670ad5e8031e3ecbd4feb5c"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201473"
+  },
+  "user": {
+    "$oid": "6659a84a9225fc14b3892d6e"
+  },
+  "datetime_start": {
+    "$date": "2024-06-19T09:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-19T12:00:00.000Z"
+  },
+  "additional_requirements": "afwefwefawefawf",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aa9a8031e3ecbd4fe501"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:40:46.983Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670ad858031e3ecbd4febb3"
+  },
+  "restaurant": {
+    "$oid": "6670a8448031e3ecbd4fe29f"
+  },
+  "table": {
+    "$oid": "6670a8448031e3ecbd4fe2a6"
+  },
+  "user": {
+    "$oid": "6659a84a9225fc14b3892d6e"
+  },
+  "datetime_start": {
+    "$date": "2024-06-21T11:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-21T14:00:00.000Z"
+  },
+  "additional_requirements": "vwergawg",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670ab178031e3ecbd4fe5c5"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 3,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:41:25.504Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670ad948031e3ecbd4fec09"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": null,
+  "user": {
+    "$oid": "6659a84a9225fc14b3892d6e"
+  },
+  "datetime_start": {
+    "$date": "2024-06-19T09:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-19T12:00:00.000Z"
+  },
+  "additional_requirements": "asdfawefawf",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aa9a8031e3ecbd4fe501"
+  },
+  "status": "declined",
+  "declined_comment": "soidfjiaof",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:41:40.523Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670b11a19c025ada6c876c4"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201478"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-18T18:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-18T21:00:00.000Z"
+  },
+  "additional_requirements": "wzzegzzwegwegw",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:56:42.813Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670b15619c025ada6c87863"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201477"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-05-24T11:57:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-05-24T14:57:00.000Z"
+  },
+  "additional_requirements": "3rawergergag",
+  "comment": "Amazing food",
+  "rating": 3,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 3,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:57:42.804Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670b16919c025ada6c878b9"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201479"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-24T12:57:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-24T15:57:00.000Z"
+  },
+  "additional_requirements": "awgawgaweg",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 3,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:58:01.267Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6670b19a19c025ada6c87a3e"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201473"
+  },
+  "user": {
+    "$oid": "6658ed8dafde5e4582607fd6"
+  },
+  "datetime_start": {
+    "$date": "2024-06-18T18:58:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-18T21:58:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-17T21:58:50.865Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66714d64e1804a55a45a967b"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201473"
+  },
+  "user": {
+    "$oid": "66598c3206bc85218befe086"
+  },
+  "datetime_start": {
+    "$date": "2024-06-18T09:07:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-18T12:07:00.000Z"
+  },
+  "additional_requirements": "faefawegawg",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aa9a8031e3ecbd4fe501"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-18T09:03:32.215Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66714f73e1804a55a45aa18a"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201475"
+  },
+  "user": {
+    "$oid": "6658ed8dafde5e4582607fd6"
+  },
+  "datetime_start": {
+    "$date": "2024-06-18T10:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-18T13:00:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aa9a8031e3ecbd4fe501"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-18T09:12:19.588Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667150d1e1804a55a45aa3e3"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201478"
+  },
+  "user": {
+    "$oid": "6670a6e78031e3ecbd4fe115"
+  },
+  "datetime_start": {
+    "$date": "2024-06-18T09:20:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-18T12:50:00.000Z"
+  },
+  "additional_requirements": "thshsrth",
+  "comment": "Amazing",
+  "rating": 5,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "finished",
+  "declined_comment": "",
+  "showed_up": true,
+  "number_of_people": 4,
+  "time_increased": true,
+  "created_at": {
+    "$date": "2024-06-18T09:18:09.953Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667150efe1804a55a45aa4c2"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201472"
+  },
+  "user": {
+    "$oid": "6670a6e78031e3ecbd4fe115"
+  },
+  "datetime_start": {
+    "$date": "2024-06-26T12:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-26T15:00:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 4,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-18T09:18:39.587Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66715101e1804a55a45aa518"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201474"
+  },
+  "user": {
+    "$oid": "6670a6e78031e3ecbd4fe115"
+  },
+  "datetime_start": {
+    "$date": "2024-06-28T11:00:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-28T14:00:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "accepted",
+  "declined_comment": "",
+  "showed_up": false,
+  "number_of_people": 5,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-18T09:18:57.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6671512ae1804a55a45aa5f5"
+  },
+  "restaurant": {
+    "$oid": "66698736e68c73a9c320146e"
+  },
+  "table": {
+    "$oid": "66698736e68c73a9c3201472"
+  },
+  "user": {
+    "$oid": "6670a6e78031e3ecbd4fe115"
+  },
+  "datetime_start": {
+    "$date": "2024-06-24T09:19:00.000Z"
+  },
+  "datetime_end": {
+    "$date": "2024-06-24T12:19:00.000Z"
+  },
+  "additional_requirements": "",
+  "comment": "",
+  "rating": -1,
+  "waiter": {
+    "$oid": "6670aae68031e3ecbd4fe563"
+  },
+  "status": "declined",
+  "declined_comment": "fawefwef",
+  "showed_up": false,
+  "number_of_people": 3,
+  "time_increased": false,
+  "created_at": {
+    "$date": "2024-06-18T09:19:38.451Z"
+  },
+  "__v": 0
+}]

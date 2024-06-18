@@ -59,4 +59,8 @@ reservationRouter
 
 reservationRouter.route('/getAll').get((req, res) => new ReservationController().getAll(req, res));
 
+reservationRouter
+  .route('/getWaitersReservations/:waiter_id')
+  .get((req, res) => new ReservationController().getWaitersReservations(req, res));
+
 export default reservationRouter;

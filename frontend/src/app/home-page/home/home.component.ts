@@ -31,11 +31,9 @@ export class HomeComponent implements OnInit {
   searchType: string = '';
 
   ngOnInit(): void {
-    this.usersService.getAllUsers().subscribe((resp) => {
+    this.usersService.getActiveGuests().subscribe((resp) => {
       if (resp['message'] == 'ok') {
-        this.numOfRegisteredGuests = resp['users'].filter(
-          (user: User) => user.active === 'active' && user.type === 'guest'
-        ).length;
+        this.numOfRegisteredGuests = resp['users'].length;
       } else console.log(resp['message']);
     });
 

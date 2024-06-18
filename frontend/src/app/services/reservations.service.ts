@@ -109,4 +109,8 @@ export class ReservationsService {
   getAll() {
     return this.http.get<Reservation[]>(`${this.uri}/getAll`);
   }
+
+  getWaitersReservations(waiter_id: string) {
+    return this.http.get<Reservation[]>(`${this.uri}/getWaitersReservations/${waiter_id}`);
+  }
 }

@@ -1,0 +1,12 @@
+.card {
+  max-width: 250px; /* Adjust the maximum width of the card */
+}
+
+.card-img-top {
+  max-height: 200px; /* Adjust the maximum height of the card image */
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 10px; /* Adjust padding inside the card body */
+}

@@ -1,1 +1,76 @@
-<p>guest-food-delivery works!</p>
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Current reservations</b></div>
+
+  <div class="table-responsive" *ngIf="currentDeliveries.length > 0; else noCurrentDeliveries">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Items</th>
+          <th>Total price</th>
+          <th>Status</th>
+          <th>Estimated delivery</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let delivery of currentDeliveries">
+          <td>{{ delivery.restaurantName }}</td>
+          <td>{{ delivery.date | date : 'dd-MM-yyyy' }}</td>
+          <td style="width: 350px">{{ delivery.itemsString }}</td>
+          <td>{{ delivery.total_price }}$</td>
+          <td
+            [class.green]="delivery.status == 'accepted'"
+            [class.orange]="delivery.status == 'pending'"
+            [class.red]="delivery.status == 'declined'"
+          >
+            {{ delivery.status }}
+          </td>
+          <td *ngIf="delivery.status == 'accepted'">
+            {{ delivery.estimated_delivery | date : 'HH:mm a' }}
+          </td>
+          <td *ngIf="delivery.status != 'accepted'">-</td>
+          <td *ngIf="delivery.status == 'accepted'">
+            <button (click)="archiveDelivery(delivery)">Delivery arrived</button>
+          </td>
+          <td *ngIf="delivery.status != 'accepted'">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noCurrentDeliveries> You currently have no deliveries. </ng-template>
+</div>
+
+<hr />
+
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="color: rgb(0, 153, 255)"><b>Archive of all past reservations</b></div>
+
+  <div class="table-responsive" *ngIf="archiveDeliveries.length > 0; else noArchiveDeliveries">
+    <table class="table table-sm table-striped w-100 text-small centered-table">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Items</th>
+          <th>Total price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let delivery of archiveDeliveries">
+          <td>{{ delivery.restaurantName }}</td>
+          <td>{{ delivery.date | date : 'dd-MM-yyyy' }}</td>
+          <td style="width: 350px">{{ delivery.itemsString }}</td>
+          <td>{{ delivery.total_price }}$</td>
+          <td *ngIf="delivery.status == 'declined'" style="color: red">declined</td>
+          <td *ngIf="delivery.status != 'declined'">arrived</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noArchiveDeliveries> There are no archive deliveries. </ng-template>
+</div>
+
+<hr />

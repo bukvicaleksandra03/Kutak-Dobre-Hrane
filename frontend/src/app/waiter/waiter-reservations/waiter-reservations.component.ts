@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./waiter-reservations.component.css'],
 })
 export class WaiterReservationsComponent implements OnInit {
-  loggedWaiter: User;
+  loggedWaiter: User = new User();
 
   pendingReservations: Reservation[] = [];
   allAcceptedReservations: Reservation[] = [];
@@ -35,54 +35,60 @@ export class WaiterReservationsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let userLS = localStorage.getItem('loggedUser');
-    if (!userLS) return;
-    else this.loggedWaiter = JSON.parse(userLS);
+    this.userService.getUserProfile().subscribe((user) => {
+      this.loggedWaiter = user;
 
-    this.pendingReservations = [];
-    this.ongoingReservations = [];
-    this.currentyHereReservations = [];
-    this.acceptedReservations = [];
+      this.pendingReservations = [];
+      this.ongoingReservations = [];
+      this.currentyHereReservations = [];
+      this.acceptedReservations = [];
 
-    this.reservationsService
-      .getPendingReservations(this.loggedWaiter.restaurant)
-      .subscribe((reservations) => {
-        if (reservations) {
-          this.pendingReservations = reservations;
-          this.pendingReservations.forEach((reservation) => {
-            this.userService.getUsername(reservation.user).subscribe((username) => {
-              reservation.username = username;
+      this.reservationsService
+        .getPendingReservations(this.loggedWaiter.restaurant)
+        .subscribe((reservations) => {
+          if (reservations) {
+            this.pendingReservations = reservations;
+            this.pendingReservations.forEach((reservation) => {
+              this.userService.getUsername(reservation.user).subscribe((username) => {
+                reservation.username = username;
+              });
             });
-          });
-        }
-      });
+          }
+        });
 
-    this.reservationsService
-      .getAcceptedReservations(this.loggedWaiter.restaurant)
-      .subscribe((reservations) => {
-        if (reservations) {
-          this.allAcceptedReservations = reservations;
-          this.fetchUsernameForEachReservation(this.allAcceptedReservations);
-          this.allAcceptedReservations.forEach((reservation) => {
-            let date_now = new Date();
-            if (
-              new Date(reservation.datetime_start) <= date_now &&
-              new Date(reservation.datetime_end) >= date_now
-            ) {
-              this.ongoingReservations.push(reservation);
-            } else {
-              this.acceptedReservations.push(reservation);
-            }
-          });
-        }
-      });
+      this.reservationsService
+        .getAcceptedReservations(this.loggedWaiter.restaurant)
+        .subscribe((reservations) => {
+          if (reservations) {
+            this.allAcceptedReservations = reservations;
+            this.fetchUsernameForEachReservation(this.allAcceptedReservations);
+            this.allAcceptedReservations.forEach((reservation) => {
+              let date_now = new Date();
+              if (
+                new Date(reservation.datetime_start) <= date_now &&
+                new Date(reservation.datetime_end) >= date_now
+              ) {
+                this.ongoingReservations.push(reservation);
+              } else {
+                this.acceptedReservations.push(reservation);
+              }
+            });
 
-    this.reservationsService
-      .getCurrentlyHereReservations(this.loggedWaiter.restaurant)
-      .subscribe((reservations) => {
-        this.currentyHereReservations = reservations;
-        this.fetchUsernameForEachReservation(this.currentyHereReservations);
-      });
+            this.acceptedReservations.sort((res1, res2) => {
+              const date1 = new Date(res1.datetime_start);
+              const date2 = new Date(res2.datetime_start);
+              return date1.getTime() - date2.getTime();
+            });
+          }
+        });
+
+      this.reservationsService
+        .getCurrentlyHereReservations(this.loggedWaiter.restaurant)
+        .subscribe((reservations) => {
+          this.currentyHereReservations = reservations;
+          this.fetchUsernameForEachReservation(this.currentyHereReservations);
+        });
+    });
   }
 
   decline(reservation: Reservation) {

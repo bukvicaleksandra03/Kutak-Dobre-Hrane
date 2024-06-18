@@ -206,4 +206,12 @@ export class ReservationController {
       res.json(reservations);
     });
   };
+
+  getWaitersReservations = (req: express.Request, res: express.Response) => {
+    let waiter_id = req.params.waiter_id;
+
+    ReservationM.find({ waiter: waiter_id }).then((reservations) => {
+      res.json(reservations);
+    });
+  };
 }

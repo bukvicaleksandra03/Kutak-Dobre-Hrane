@@ -1,10 +1,13 @@
 import { Layout } from './layout';
 
-class Meal {
+export class Meal {
+  _id: string = '';
   name: string = '';
   picture: string = '';
   price: number = 0;
   ingredients: string = '';
+
+  quantity: number = 0;
 }
 
 export class Restaurant {

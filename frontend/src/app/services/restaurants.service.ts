@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Restaurant } from '../models/restaurant';
+import { Meal, Restaurant } from '../models/restaurant';
+import { retryWhen } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,14 @@ export class RestaurantsService {
     return this.http.get<Restaurant[]>(`${this.uri}/getAll`);
   }
 
+  addNewMeal(restaurant_id: string, meal: Meal) {
+    const data = {
+      restaurant_id: restaurant_id,
+      meal: meal,
+    };
+    return this.http.post<Meal>(`${this.uri}/addNewMeal`, data);
+  }
+
   getRestaurantById(restaurant_id: string) {
     return this.http.get<Restaurant>(`${this.uri}/getRestaurant/${restaurant_id}`);
   }
@@ -26,5 +35,9 @@ export class RestaurantsService {
       restaurant_id: restaurant_id,
       rating: rating,
     });
+  }
+
+  getMeals(restaurant_id: string) {
+    return this.http.get<Meal[]>(`${this.uri}/getMeals/${restaurant_id}`);
   }
 }

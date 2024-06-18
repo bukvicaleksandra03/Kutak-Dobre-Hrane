@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Restaurant } from 'src/app/models/restaurant';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 
@@ -8,7 +9,7 @@ import { RestaurantsService } from 'src/app/services/restaurants.service';
   styleUrls: ['./all-restaurants.component.css'],
 })
 export class AllRestaurantsComponent implements OnInit {
-  constructor(private restaurantsService: RestaurantsService) {}
+  constructor(private restaurantsService: RestaurantsService, private router: Router) {}
 
   allRestaurants: Restaurant[] = [];
 
@@ -16,5 +17,11 @@ export class AllRestaurantsComponent implements OnInit {
     this.restaurantsService.getAll().subscribe((restaurants: Restaurant[]) => {
       this.allRestaurants = restaurants;
     });
+  }
+
+  onLinkClick(event: Event, restaurant: Restaurant): void {
+    event.preventDefault();
+    localStorage.setItem('chosenRestaurant', JSON.stringify(restaurant));
+    this.router.navigate(['admin/add-meal']);
   }
 }

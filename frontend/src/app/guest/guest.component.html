@@ -1,9 +1,15 @@
-<nav class="nav justify-content-center nav-tabs" style="background-color:#EEF8FF; margin-bottom: 20px">
-  <a class="nav-link" routerLink="profile">Profile</a>
-  <a class="nav-link" routerLink="restaurants">Restaurants</a>
-  <a class="nav-link" routerLink="reservations">Reservations</a>
-  <a class="nav-link" routerLink="food-delivery">Order food delivery</a>
-  <a class="nav-link" routerLink="shopping-cart">Shopping cart</a>
+<nav
+  class="nav nav-tabs d-flex justify-content-between"
+  style="background-color: #eef8ff; margin-bottom: 20px"
+>
+  <div class="nav">
+    <a class="nav-link" routerLink="profile">Profile</a>
+    <a class="nav-link" routerLink="restaurants">Restaurants</a>
+    <a class="nav-link" routerLink="reservations">Reservations</a>
+    <a class="nav-link" routerLink="food-delivery">Food delivery</a>
+  </div>
+  <div class="nav ml-auto">
+    <button class="btn btn-outline-primary btn-sm mt-1 mr-2 mb-1" (click)="logout()">Logout</button>
+  </div>
 </nav>
-
 <router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div style="margin-left: 30px">
+    <h2>Make a reservation</h2>
+    Pick date and time of the reservation:
+    <input
+      id="datetimeOfRes"
+      type="datetime-local"
+      [(ngModel)]="datetimeStr"
+      (change)="newDateTimeSelected()"
+    />
+    <br />
+    Number of people:
+    <input type="number" min="1" step="1" [(ngModel)]="numOfPeople" [defaultValue]="2" />
+    <br />
+    Additional requirements: <br />
+    <textarea rows="3" cols="40" [(ngModel)]="additionalReq"> </textarea>
+    <br />
+
+    <button (click)="makeReservation()">Make reservation</button><br />
+  </div>
+  <span style="margin-left: 30px; color: red">{{ errorMessage }}</span>
+
+  <div style="margin-left: 30px">
+    <span style="color: blue">{{ messageCanvas }}</span
+    ><br />
+
+    <canvas #canvasElement width="600" height="360" style="border: 2px solid #000000"></canvas><br />
+  </div>
+</div>

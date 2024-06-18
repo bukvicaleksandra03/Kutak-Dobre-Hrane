@@ -12,8 +12,6 @@ import { checkPassword } from 'src/app/userValidationFuncs';
 export class LoginComponent {
   constructor(private router: Router, private userService: UserService) {}
 
-  user: User = new User();
-
   username: string;
   password: string;
 
@@ -22,15 +20,16 @@ export class LoginComponent {
   login() {
     this.userService.login(this.username, this.password).subscribe((resp) => {
       if (resp['message'] == 'ok') {
-        if (this.user.type == 'admin') {
+        localStorage.setItem('token', resp['token']);
+        let userType = this.userService.getRole();
+        if (userType == 'admin') {
+          localStorage.removeItem('token');
           this.message = 'Wrong password or username.';
           return;
         }
-        this.user = resp['user'];
-        localStorage.setItem('loggedUser', JSON.stringify(this.user));
-        if (this.user.type == 'guest') {
+        if (userType == 'guest') {
           this.router.navigate(['/guest/profile']);
-        } else if (this.user.type == 'waiter') {
+        } else if (userType == 'waiter') {
           this.router.navigate(['/waiter/profile']);
         }
       } else this.message = resp['message'];
@@ -52,6 +51,7 @@ export class LoginComponent {
   }
 
   enterUsername() {
+    this.message2 = '';
     this.userService.getSafetyQuestion(this.username2).subscribe((resp) => {
       if (resp['message'] == 'ok') {
         this.safetyQuestion = resp['question'];
@@ -63,6 +63,7 @@ export class LoginComponent {
   }
 
   enterSafetyAnswer() {
+    this.message2 = '';
     this.userService.checkSafetyAnswer(this.username2, this.safetyAnswer).subscribe((resp) => {
       if (resp['message'] == 'ok') {
         this.changingPasswordstep3 = true;
@@ -71,6 +72,7 @@ export class LoginComponent {
   }
 
   changePassword() {
+    this.message2 = '';
     if (this.newPassword1 != this.newPassword2) {
       this.message2 = 'Passwords are not the same';
       return;

@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
-import {
-  checkAllFields,
-  checkCreditCard,
-  checkEmail,
-  checkPhone,
-} from '../userValidationFuncs';
+import { checkAllFields, checkCreditCard, checkEmail, checkPhone } from '../userValidationFuncs';
 import { UserService } from '../services/user.service';
 import { Location } from '@angular/common';
 
@@ -16,22 +11,15 @@ import { Location } from '@angular/common';
   styleUrls: ['./change-profile.component.css'],
 })
 export class ChangeProfileComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private userService: UserService,
-    private location: Location
-  ) {}
+  constructor(private router: Router, private userService: UserService, private location: Location) {}
   user: User = new User();
   prof_picture: File;
   message: string;
 
   ngOnInit(): void {
-    let userLS = localStorage.getItem('loggedUser');
-    if (userLS == null) {
-      return;
-    }
-
-    this.user = JSON.parse(userLS);
+    this.userService.getUserProfile().subscribe((user) => {
+      this.user = user;
+    });
   }
 
   change() {
@@ -59,9 +47,8 @@ export class ChangeProfileComponent implements OnInit {
       this.userService.updateUser(this.user).subscribe((resp) => {
         if (resp['message'] == 'ok') {
           alert('Successfully update profile.');
-          localStorage.clear();
-          localStorage.setItem('loggedUser', JSON.stringify(this.user));
-          this.location.back();
+
+          this.goBack();
         } else {
           this.message = resp['message'];
         }
@@ -73,9 +60,8 @@ export class ChangeProfileComponent implements OnInit {
           this.userService.updateUser(this.user).subscribe((rest) => {
             if (resp['message'] == 'ok') {
               alert('Successfully update profile.');
-              localStorage.clear();
-              localStorage.setItem('loggedUser', JSON.stringify(this.user));
-              this.location.back();
+
+              this.goBack();
             } else {
               this.message = resp['message'];
             }
@@ -96,14 +82,8 @@ export class ChangeProfileComponent implements OnInit {
     const image = new Image();
     image.src = URL.createObjectURL(slika);
     image.onload = () => {
-      if (
-        image.height < 100 ||
-        image.height > 300 ||
-        image.width < 100 ||
-        image.height > 300
-      ) {
-        this.message =
-          'Picture must have dimensions between 100x100 and 300x300';
+      if (image.height < 100 || image.height > 300 || image.width < 100 || image.height > 300) {
+        this.message = 'Picture must have dimensions between 100x100 and 300x300';
         this.prof_picture = null;
       } else {
         this.message = '';
@@ -115,6 +95,10 @@ export class ChangeProfileComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['guest/profile']);
+    if (this.user.type == 'guest') {
+      this.router.navigate(['guest/profile']);
+    } else if (this.user.type == 'waiter') {
+      this.router.navigate(['waiter/profile']);
+    }
   }
 }

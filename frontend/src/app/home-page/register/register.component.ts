@@ -48,7 +48,7 @@ export class RegisterComponent {
 
     this.user.active = 'pending';
     this.user.didnt_show_cnt = 0;
-    this.user.restaurant = 'doifa';
+    this.user.restaurant = '';
     if (this.prof_picture == null) {
       this.user.profile_picture = 'generic_user.jpg';
       this.servis.register(this.user).subscribe((resp) => {
